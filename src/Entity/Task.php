@@ -32,9 +32,30 @@ class Task
      */
     private $done;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="tasks")
+     */
+    private $category;
+
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param mixed $category
+     */
+    public function setCategory(Category $category): void
+    {
+        $this->category = $category;
     }
 
     public function getTitle(): ?string
